@@ -11,12 +11,18 @@ function Nav () {
 	const [on, toggle] = useState(0);
 
 	useEffect (() => {
+		const btn = document.getElementById("bio");
+
 		if (on == 1) {
-			document.getElementById("bio").innerHTML = "back";
+			btn.innerHTML = "back";
+			btn.style.background = "#f0ad4e";
+			btn.style.borderColor = "#f0ad4e";
 
 		}
 		else {
-			document.getElementById("bio").innerHTML = "bio";
+			btn.innerHTML = "bio";
+			btn.style.background = "#0275d8";
+			btn.style.borderColor = "#0275d8";
 			history.push ("");
 		}
 	});
@@ -44,7 +50,8 @@ function Nav () {
 		  </Link>
 		 <ButtonGroup style={buttonStyle} toggle>
 			  <Link to="/bio" style={{margin: "0.5rem 0rem 0.5rem 0.5rem"}}>
-				  <Button onClick={() => toggle(on == 0 ? 1 : 0)} id="bio" style={{marginLeft: "1rem"}}>bio</Button>
+				  <Button onClick={() => toggle(on == 0 ? 1 : 0)} 
+				  id="bio" style={{marginLeft: "1rem"}}>bio</Button>
 			  </Link>
 		</ButtonGroup>
 	  </nav>
