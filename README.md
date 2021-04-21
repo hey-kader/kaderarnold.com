@@ -28,4 +28,9 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 
 ```
 
+After running these commands, change line 9 of ```server.js``` from 
+```const key = fs.readFileSync('/etc/ssl/private/kaderarnold.com.key') ```
+to ``` const key = fs.readFileSync('key.pem')```
+
+
 
