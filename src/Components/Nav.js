@@ -8,7 +8,7 @@ import '../App.js'
 function Nav () {
 
 	let history = useHistory ()
-	const [on, toggle] = useState(0);
+	let [on, toggle] = useState(0);
 
 	useEffect (() => {
 		const btn = document.getElementById("bio");
@@ -17,6 +17,7 @@ function Nav () {
 			btn.innerHTML = "back";
 			btn.style.background = "#f0ad4e";
 			btn.style.borderColor = "#f0ad4e";
+			on = 0;
 
 		}
 		else {
@@ -24,13 +25,10 @@ function Nav () {
 			btn.style.background = "#0275d8";
 			btn.style.borderColor = "#0275d8";
 			history.push ("");
+			on = 1;
 		}
 	});
 	
-	function back () {
-				
-	}
-
 	const style = {
 		background: "#ffda669", 
 		margin: "0px",
@@ -45,12 +43,10 @@ function Nav () {
 
 	return (
 	  <nav style={style}>
-		  <Link style={{color: 'black', display: "inline-block"}} to="/" >
-			  <h1 style={{margin: "0.7rem 0.5rem 0.5rem 0rem"}}>Kader Arnold</h1>
-		  </Link>
+			  <h1 style={{display: 'inline-block', margin: "0.7rem 0.5rem 0.5rem 0rem"}}>Kader Arnold</h1>
 		 <ButtonGroup style={buttonStyle} toggle>
 			  <Link to="/bio" style={{margin: "0.5rem 0rem 0.5rem 0.5rem"}}>
-				  <Button onClick={() => toggle(on == 0 ? 1 : 0)} 
+				  <Button onClick={() => toggle(on)} 
 				  id="bio" style={{marginLeft: "1rem"}}>bio</Button>
 			  </Link>
 		</ButtonGroup>
