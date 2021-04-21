@@ -15,7 +15,7 @@ While I usually style my own websites using a stylesheet, I decided to use Boots
 
 The serving script is written using NodeJS and Express. All http traffic uses a 301 http response (permanent redirect) to forward traffic through https. 
 
-## To Clone The Repository
+## To Clone The Repository (Linux)
 
 ```
 $ git clone git@github.com:pablopenrose/kaderarnold.com.git
