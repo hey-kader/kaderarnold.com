@@ -13,6 +13,19 @@ While I usually style my own websites using a stylesheet, I decided to use Boots
 
 ### Back End
 
-The serving script is written using NodeJS. server.js is not included in the repo because it inherently reveals the location of the servers OpenSSL certificate.  
+The serving script is written using NodeJS and Express.
+
+## To Clone The Repository
+
+```
+git clone git@github.com:pablopenrose/kaderarnold.com.git
+cd kaderarnold.com
+sudo apt-get install nodejs openssl 
+npm install
+
+// Generate a self-signed ssl key
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+
+```
 
 
