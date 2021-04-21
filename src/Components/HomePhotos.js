@@ -14,15 +14,15 @@ class HomePhotos extends Component {
 			<Carousel autoplay>
 				<Carousel.Item interval={5000}>
 					<div id="photo-set" className="photo-wrapper">
-						<img className="main-pic" style={picStyle} src="Images/pics/two/4.jpg" alt="1" />
-						<img className="main-pic" style={picStyle} src="Images/pics/two/6.jpg" alt="2" />
+						<img className="main-pic" style={picStyle} src="compressed/_4.jpg" alt="4" />
+						<img className="main-pic" style={picStyle} src="compressed/_6.jpg" alt="6" />
 					</div>
 				</Carousel.Item>
 
 				<Carousel.Item interval={5000}>
 					<div id="photo-set" className="photo-wrapper">
-						<img className="main-pic" style={picStyle} src="Images/pics/two/1.jpg" alt="1" />
-						<img className="main-pic" style={picStyle} src="Images/pics/two/3.jpg" alt="2" />
+						<img className="main-pic" style={picStyle} src="compressed/_1.jpg" alt="1" />
+						<img className="main-pic" style={picStyle} src=" compressed/_3.jpg" alt="3" />
 					</div>
 				</Carousel.Item>
 			</Carousel>

@@ -11,26 +11,33 @@ function Nav () {
 	let [on, toggle] = useState(0);
 
 	useEffect (() => {
-		const btn = document.getElementById("bio");
+		const btn = document.getElementById("more");
 
-		if (on == 1) {
+		// I was changing the color of the button
+		// on toggle, but perfer the subtlety of 
+		// just changing the text 
+		
+		 		if (on == 1) {
+
+			// btn.style.background = "#F78D56";
+			// btn.style.borderColor = "#F78D56";
+			
 			btn.innerHTML = "back";
-			btn.style.background = "#f0ad4e";
-			btn.style.borderColor = "#f0ad4e";
 			on = 0;
 
 		}
 		else {
-			btn.innerHTML = "bio";
-			btn.style.background = "#0275d8";
-			btn.style.borderColor = "#0275d8";
+
+			// btn.style.background = "#5cb85c";
+			// btn.style.borderColor = "#5cb85c";
+			
+			btn.innerHTML = "more";
 			history.push ("");
 			on = 1;
 		}
 	});
 	
 	const style = {
-		background: "#ffda669", 
 		margin: "0px",
 		padding: "0px", 
 		display: "inline-block",
@@ -45,9 +52,9 @@ function Nav () {
 	  <nav style={style}>
 			  <h1 style={{display: 'inline-block', margin: "0.7rem 0.5rem 0.5rem 0rem"}}>Kader Arnold</h1>
 		 <ButtonGroup style={buttonStyle} toggle>
-			  <Link to="/bio" style={{margin: "0.5rem 0rem 0.5rem 0.5rem"}}>
+			  <Link to="/more" style={{margin: "0.5rem 0rem 0.5rem 0.5rem"}}>
 				  <Button onClick={() => toggle(on)} 
-				  id="bio" style={{marginLeft: "1rem"}}>bio</Button>
+				  id="more" style={{marginLeft: "1rem"}}>more</Button>
 			  </Link>
 		</ButtonGroup>
 	  </nav>

@@ -18,7 +18,7 @@ function Bio () {
 						</Card.Text>
 					</Card>
 					<hr />
-					<Card bg="warning">
+					<Card bg="success">
 						<Card.Title style={{padding: "0.5rem", margin: "0.5rem"}}>
 							<h5>Content Writing</h5>
 						</Card.Title>
@@ -36,7 +36,7 @@ function Bio () {
 						</Card.Text>
 					</Card>
 					<hr />
-					<p><i>you can download my cv <a href="Resume.pdf" target="_blank">here.</a></i></p>
+					<p><i>you can download my cv <a href="resume.kaderarnold.com.pdf" target="_blank">here.</a></i></p>
 				</Card.Body>
 		</Card>
 	);
