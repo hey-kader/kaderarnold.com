@@ -13,7 +13,7 @@ While I usually style my own websites using a stylesheet, I decided to use Boots
 
 ### Back End
 
-The serving script is written using NodeJS and Express.
+The serving script is written using NodeJS and Express. All http traffic uses a 301 http response(permanent redirect) to forward traffic through https. 
 
 ## To Clone The Repository
 
@@ -23,9 +23,8 @@ $ cd kaderarnold.com
 $ sudo apt-get install nodejs openssl 
 $ npm install
 
-// Generate a self-signed ssl key
-openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-
+// Generate a self-signed ssl key and certificate
+$ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 ```
 
 After running these commands, change line 9 of ```server.js``` from 
