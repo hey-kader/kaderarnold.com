@@ -36,7 +36,7 @@ function Bio () {
 						</Card.Text>
 					</Card>
 					<hr />
-					<p><i>you can download my cv <a href="CV.pdf" target="_blank">here.</a></i></p>
+					<p><i>you can download my cv <a href="Resume.pdf" target="_blank">here.</a></i></p>
 				</Card.Body>
 		</Card>
 	);

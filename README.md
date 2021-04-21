@@ -1,4 +1,4 @@
-# getting started with create react app
+# kaderarnold.com src code 
 
 this project was bootstrapped with [create react app](https://github.com/facebook/create-react-app).
 
