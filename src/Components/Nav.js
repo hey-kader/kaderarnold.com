@@ -11,30 +11,44 @@ function Nav () {
 	let [on, toggle] = useState(0);
 
 	useEffect (() => {
-		const btn = document.getElementById("more");
+	    
+	    const btn = document.getElementById("bio");
+	    const blog_btn = document.getElementById("blog");
+	    const store_btn = document.getElementById("store");
 
-		// I was changing the color of the button
-		// on toggle, but perfer the subtlety of 
-		// just changing the text 
+	    // I was changing the color of the button
+	    // on toggle, but perfer the subtlety of 
+	    // just changing the text 
 		
-		 		if (on == 1) {
+	    if (window.location.href == "http://localhost:3000/more" && on) {
+		btn.innerHTML = "back";
+		blog_btn.style.display = "none";
+		store_btn.style.display = "none";
+		on = 0
+	    }
+	    else if (window.location.href == "http://localhost:3000/blog" && on) {
+		blog_btn.innerHTML = "back";
+		btn.style.display = "none";
+		store_btn.style.display = "none";
+		on = 0
+	    }
+	    else if (window.location.href == "http://localhost:3000/store" && on) {
+		blog_btn.innerHTML = "back";
+		btn.style.display = "none";
+		store_btn.style.display = "none";
+		on = 0
+	    }
+	    else if (on == 0) {
+		on = 1
+		blog_btn.innerHTML = "blog";
+		btn.innerHTML = "bio";
+		btn.style.display = "block";
+		blog_btn.style.display = "block";
+		store_btn.style.display = "block";
 
-			// btn.style.background = "#F78D56";
-			// btn.style.borderColor = "#F78D56";
-			
-			btn.innerHTML = "back";
-			on = 0;
+		history.push("");
+	    }
 
-		}
-		else {
-
-			// btn.style.background = "#5cb85c";
-			// btn.style.borderColor = "#5cb85c";
-			
-			btn.innerHTML = "more";
-			history.push ("");
-			on = 1;
-		}
 	});
 	
 	const style = {
@@ -50,13 +64,21 @@ function Nav () {
 
 	return (
 	  <nav style={style}>
-			  <h1 style={{display: 'inline-block', margin: "0.7rem 0.5rem 0.5rem 0rem"}}>Kader Arnold</h1>
-		 <ButtonGroup style={buttonStyle} toggle>
-			  <Link to="/more" style={{margin: "0.5rem 0rem 0.5rem 0.5rem"}}>
-				  <Button onClick={() => toggle(on)} 
-				  id="more" style={{marginLeft: "1rem"}}>more</Button>
-			  </Link>
-		</ButtonGroup>
+	      <h1 style={{display: 'inline-block', margin: "0.7rem 0.5rem 0.5rem 0rem"}}>Kader Arnold</h1>
+	     <ButtonGroup style={buttonStyle} toggle>
+		 <Link to="/blog" style={{margin: "0.5rem 0rem 0.5rem 0.5rem"}}>
+		  <Button onClick={() => toggle(on)} 
+		      id="blog" style={{marginLeft: "1rem"}}>blog</Button>
+		 </Link>
+		  <Link to="/more" style={{margin: "0.5rem 0rem 0.5rem 0.5rem"}}>
+		    <Button onClick={() => toggle(on)} 
+		      id="bio" style={{marginLeft: "1rem"}}>bio</Button>
+		  </Link>
+		  <Link to="/store" style={{margin: "0.5rem 0rem 0.5rem 0.5rem"}}>
+		    <Button onClick={() => toggle(on)} 
+		      id="store" style={{marginLeft: "1rem"}}>store</Button>
+		  </Link>
+	    </ButtonGroup>
 	  </nav>
 	);
 
