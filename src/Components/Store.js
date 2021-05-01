@@ -3,14 +3,9 @@ import {Card, Button} from 'react-bootstrap';
 
 function Store ()  {
 
-    let [price, update] = useState(0);
-    useEffect (() => {
-	var quantity = document.getElementById('quantity');
-	
-    }); 
-
-    function handleChange (event) {
-	price = (event.target.value * 30.00)
+    function handleSubmit (event) {
+	alert('hi');
+	event.preventDefault();
     }
 
     return (
@@ -27,10 +22,10 @@ function Store ()  {
 			   <Card.Text style={{float: 'right'}}>Price: 30.00</Card.Text>
 		       </Card.Header>
 		       <img src="tee.png" style={{width: '50%', margin: 'auto'}} alt="white tee shirt" />
-		       <Card.Body>
-			   <Card.Text style={{margin: '0px 5px', padding: '0px 5px'}}>
-			       <form action="index.html">
-			       Size:<select id="size" style={{marginRight: '5px', paddingRight: '5px'}} name="size">
+		       <Card.Footer>
+			   <Card.Text>
+			       <form onSubmit={handleSubmit}>
+				   Size: <select id="size" style={{marginRight: '5px', paddingRight: '5px'}} name="size">
 				       <option value="xs" selected>xs</option>
 				       <option value="s">s</option>
 				       <option value="m">m</option>
@@ -38,7 +33,7 @@ function Store ()  {
 				       <option value="xl">xl</option>
 				   </select>
 
-				   Quantity: <select onChange={handleChange} id="quantity" name="quantity">
+				   Quantity: <select id="quantity" name="quantity">
 
 				       <option value="1" selected>1</option>
 				       <option value="2">2</option>
@@ -51,10 +46,10 @@ function Store ()  {
 				       <option value="9">9</option>
 				       <option value="10">10</option>
 				   </select>
-				   <Button style={{size: '50%', float: 'right'}}>Buy</Button>
+				   <button style={{size: '50%', float: 'right'}}>buy</button>
 			       </form>
 			   </Card.Text>
-		       </Card.Body>
+		       </Card.Footer>
 		   </Card>
 	       </Card.Body>
 	   </Card> 
