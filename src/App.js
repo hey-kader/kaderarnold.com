@@ -3,8 +3,9 @@ import HomePhotos from './Components/HomePhotos';
 import {Card, Button} from 'react-bootstrap';
 import Bio from './Components/Bio';
 import Blog from './Components/Blog';
-import Store from './Components/Store';
+import Tee from './Components/Tee';
 import Nav from './Components/Nav.js';
+import Checkout from './Components/Checkout';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Footer from "./Components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,24 +13,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App () {
 	
   return (
-	  <div style={{maxWidth: "65%", margin: "auto"}}>
-		<Router>
-			<Nav />
-			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route path="/more" component={Bio} />
-				<Route path="/blog" component={Blog} />
-				<Route path="/store" component={Store} />
-			</Switch>
-		</Router>
-	    <Footer />
+      <div style={{maxwidth: "65%", width: '680px',  margin: "auto"}}>
+	<Router>
+	    <Nav />
+	    <Switch>
+	      <Route exact path="/" component={Home} />
+	      <Route path="/bio" component={Bio} />
+	      <Route path="/blog" component={Blog} />
+	      <Route path="/tee" component={Tee} />
+	    </Switch>
+	</Router>
+    <Footer />
     </div>
-  );
-
-}
+  )}
 
 const Home = () => (
-		<HomePhotos />
+  <HomePhotos />
 );
 
 export default App;
