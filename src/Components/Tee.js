@@ -8,7 +8,24 @@ function Tee ()  {
 
 //    var selectmenu = document.getElementById("quantity");
 //    var options = selectmenu.selectedIndex;
-//    var quantity = selectmenu[options].text
+
+    let [size, setSize] = useState(0); 
+
+    useEffect ( () => {
+	
+	    var menu = document.getElementById("sizedrop")
+	    size = menu.options[menu.selectedIndex].value
+	});
+
+    let [count, setCount] = useState(1); 
+
+    useEffect ( () => {
+
+	var set = document.getElementById('quantity')
+	count = set.options[set.selectedIndex].value
+	alert (count)
+
+    });
 
     function hide () {
 	document.getElementById('teeCard').style.display = 'none'
@@ -33,8 +50,9 @@ function Tee ()  {
 		       <img src="tee.png" style={{width: '50%', margin: 'auto'}} alt="white tee shirt" />
 		       <Card.Footer>
 			   <Card.Text>
-			       <form>
-				   <code style={{color: 'black'}}>Size: </code><select id="size" style={{marginRight: '5px', paddingRight: '5px'}} name="size">
+				   <code style={{color: 'black'}}>Size: </code>
+				    <select id="sizedrop" onChange={() => setSize(size)} 
+					    style={{marginRight: '5px', paddingRight: '5px'}} name="size">
 				       <option value="xs" selected>xs</option>
 				       <option value="s">s</option>
 				       <option value="m">m</option>
@@ -42,8 +60,8 @@ function Tee ()  {
 				       <option value="xl">xl</option>
 				   </select>
 				   <code style={{color: 'black'}}>Quantity: </code>
-				   <select id="quantity" name="quantity">
-				       <option value="1" selected>1</option>
+				   <select onChange={count} id="quantity" name="quantity">
+				       <option value="1">1</option>
 				       <option value="2">2</option>
 				       <option value="3">3</option>
 				       <option value="4">4</option>
@@ -52,20 +70,16 @@ function Tee ()  {
 				       <option value="7">7</option>
 				       <option value="8">8</option>
 				       <option value="9">9</option>
-				       <option value="10">10</option>
 				   </select>
-			       </form>
 			   </Card.Text>
 		       </Card.Footer>
 		   </Card>
 	       </Card.Body>
-
 	       <Switch>
 	       <Route exact path="/tee/checkout">
-		   <Checkout quantity={4} />
+		   <Checkout quantity={count} size={size} />
 	       </Route>
 	       </Switch>
-
 	   <Link to="/tee/checkout">
 	       <button id="toggle" onClick={() => {hide()}} style={{size: '50%', padding: '0rem 0.4rem', float: 'right'}}>
 	       <code style={{color: 'black'}}>buy</code>
@@ -75,5 +89,6 @@ function Tee ()  {
 	</article>
     )
 }
+	    
 
 export default Tee;

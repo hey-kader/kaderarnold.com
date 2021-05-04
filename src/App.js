@@ -20,7 +20,9 @@ function App () {
 	      <Route exact path="/" component={Home} />
 	      <Route path="/bio" component={Bio} />
 	      <Route path="/blog" component={Blog} />
-	      <Route path="/tee" component={Tee} />
+	      <Route path="/tee">
+		    <Tee quantity={document.getElementById("quantity")} />
+	      </Route>
 	    </Switch>
 	</Router>
     <Footer />

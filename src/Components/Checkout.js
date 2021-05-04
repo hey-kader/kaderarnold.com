@@ -3,25 +3,32 @@ import { Card, Button } from 'react-bootstrap'
 import { Switch, Route, Link } from 'react-router-dom' 
 
 function Checkout (props) {
-    let [shippingSpeed, setState] = useState('Ground')
+
+    let [quantity, setQuantity] = useState(Number(props.quantity));
+    let [size, setSize] = useState(props.size);
+
+    let [shippingSpeed, setState] = useState('ground')
     useEffect (() => {
 
 	if (shippingSpeed == 'Ground') {
 	    document.getElementById('price').innerHTML = "12.00"
 	    document.getElementById('ground').checked = true;
 	}
+
 	else if (shippingSpeed == 'Priority') {
 	    document.getElementById('price').innerHTML = "21.00" 
 	    document.getElementById('priority').checked = true;
 	}
+
 	else if (shippingSpeed == 'Overnight') {
 	    document.getElementById('price').innerHTML = "53.00"
 	    document.getElementById('overnight').checked = true;
 	}
 
-	var subtotal = (props.quantity * 30);
-	var price = (document.getElementById('price').innerText);
-	var tax = (parseFloat(subtotal)*.07)+parseFloat(price)*0.07 
+	var subtotal = (quantity * 30);
+	var price = Number(document.getElementById('price').innerText);
+	var tax = (parseFloat(subtotal)*.07)+(parseFloat(price)*0.07) 
+
 	document.getElementById('tax').innerHTML = tax.toFixed(2)
 	document.getElementById('total').innerHTML = parseFloat(price)+(tax)+parseFloat(subtotal)
 
@@ -49,7 +56,8 @@ function Checkout (props) {
 		    <Card style={embedded_card}>
 		<Card.Header><Card.Text><h6>Shipping</h6></Card.Text></Card.Header>
 		<Card.Body>
-		    <table style={embedded_card_table}>
+		    <form action="#"> 
+			<table style={embedded_card_table}>
 			<tr>
 			    <td>
 				<input id="ground" onClick={() => setState('Ground')} type="radio" name="shipping" />
@@ -72,6 +80,8 @@ function Checkout (props) {
 			    <td id="shipping3">53.00</td>
 			</tr>
 		    </table>
+
+	</form>
 		</Card.Body>
 		<Card.Footer>
 		    <Card.Text></Card.Text>
@@ -90,8 +100,8 @@ function Checkout (props) {
 			</tr>
 		        <tr>
 		            <td>White Tee</td>
-		            <td>{props.quantity}</td>
-		            <td>{30*props.quantity+".00"}</td>
+		            <td>{quantity}</td>
+		            <td>{30*quantity}</td>
 		        </tr>
 			<tr>
 			    <td>{shippingSpeed}</td>
@@ -121,6 +131,7 @@ function Checkout (props) {
 		    </Card.Text>
 		</Card.Header>
 		<Card.Body>
+		    <form action="#">
 		    <table>
 			<tr>
 			    <td>
@@ -196,15 +207,16 @@ function Checkout (props) {
 				<input type="text" name="name" placeholder="228" required />
 			    </td>
 			</tr>
-			<br />
 		    </table>
-		</Card.Body>
+			<br />
+		</form>
+		</ Card.Body>
 		<Card.Footer></Card.Footer>
-	    </Card>
-	    </Card.Body>
+	    </ Card>
+	    </ Card.Body>
 		<Card.Footer style={{contentJustify: 'right'}}>
-		<Card.Text><input type="submit" value="submit"/></Card.Text>
-	    </Card.Footer>
+		<input type="submit" name="submit" value="submit" />
+	    </ Card.Footer>
     </>
     )
 

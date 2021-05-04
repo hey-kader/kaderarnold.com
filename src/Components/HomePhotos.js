@@ -12,7 +12,7 @@ class HomePhotos extends Component {
 		};
 
 		return (
-			<Carousel autoplay>
+			<Carousel autoPlay>
 				<Carousel.Item interval={5000}>
 					<div id="photo-set" className="photo-wrapper">
 						<img className="main-pic" style={picStyle} src="compressed/_4.jpg" alt="4" />
