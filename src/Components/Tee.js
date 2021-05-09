@@ -66,9 +66,9 @@ function Tee ()  {
 				    <select id="sizedrop" onChange={() => setSize(size)} 
 					    style={{marginRight: '5px', paddingRight: '5px'}} name="size">
 				       <option value="xs" selected>xs</option>
-				       <option value="s">s</option>
-				       <option value="m">m</option>
-				       <option value="l">l</option>
+				       <option value="sm">sm</option>
+				       <option value="md">md</option>
+				       <option value="lg">lg</option>
 				       <option value="xl">xl</option>
 				   </select>
 			   </Card.Text>
