@@ -44,7 +44,7 @@ function Nav () {
 		blog_btn.style.display = "block";
 		store_btn.style.display = "block";
 
-		history.push("");
+		history.push("/");
 	    }
 
 	});

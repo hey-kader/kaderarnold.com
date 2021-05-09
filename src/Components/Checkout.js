@@ -4,10 +4,23 @@ import { Switch, Route, Link } from 'react-router-dom'
 
 function Checkout (props) {
 
-    let [quantity, setQuantity] = useState(Number(props.quantity));
-    let [size, setSize] = useState(props.size);
+    let [size, setSize] = useState(props.size); 
+    useEffect ( () => {
+	
+	    var menu = document.getElementById("sizedrop")
+	    size = menu.options[menu.selectedIndex].value
+    });
 
-    let [shippingSpeed, setState] = useState('ground')
+    let [count, setCount] = useState(props.count); 
+    useEffect ( () => {
+
+	var set = document.getElementById('quantity')
+	count = set.options[set.selectedIndex].value
+
+    });
+
+
+    let [shippingSpeed, setState] = useState('Ground')
     useEffect (() => {
 
 	if (shippingSpeed == 'Ground') {
@@ -25,12 +38,14 @@ function Checkout (props) {
 	    document.getElementById('overnight').checked = true;
 	}
 
-	var subtotal = (quantity * 30);
+	var subtotal = (count * 30);
 	var price = Number(document.getElementById('price').innerText);
 	var tax = (parseFloat(subtotal)*.07)+(parseFloat(price)*0.07) 
 
 	document.getElementById('tax').innerHTML = tax.toFixed(2)
-	document.getElementById('total').innerHTML = parseFloat(price)+(tax)+parseFloat(subtotal)
+	document.getElementById('total').innerHTML = (parseFloat(price)+(tax)+parseFloat(subtotal)).toFixed(2)
+        document.getElementById('count').innerHTML = count
+        document.getElementById('subtotal').innerHTML = count*30
 
     });
 
@@ -99,9 +114,9 @@ function Checkout (props) {
 			    <th>Price</th>
 			</tr>
 		        <tr>
-		            <td>White Tee</td>
-		            <td>{quantity}</td>
-		            <td>{30*quantity}</td>
+		            <td>White Tee ({size})</td>
+		            <td id="count">{count}</td>
+		            <td id="subtotal">{30*count}</td>
 		        </tr>
 			<tr>
 			    <td>{shippingSpeed}</td>

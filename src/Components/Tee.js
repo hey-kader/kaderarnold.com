@@ -10,20 +10,18 @@ function Tee ()  {
 //    var options = selectmenu.selectedIndex;
 
     let [size, setSize] = useState(0); 
-
     useEffect ( () => {
 	
 	    var menu = document.getElementById("sizedrop")
 	    size = menu.options[menu.selectedIndex].value
-	});
+    });
+
 
     let [count, setCount] = useState(1); 
-
     useEffect ( () => {
 
 	var set = document.getElementById('quantity')
 	count = set.options[set.selectedIndex].value
-	alert (count)
 
     });
 
@@ -32,6 +30,8 @@ function Tee ()  {
 	document.getElementById('teeCard-Header').style.display = 'none'
 	document.getElementById('toggle').style.display = 'none'
 	document.getElementById('tbody').style.display = 'none'
+        setSize(size)
+        setCount(count)
     }
     
     return (
@@ -50,15 +50,6 @@ function Tee ()  {
 		       <img src="tee.png" style={{width: '50%', margin: 'auto'}} alt="white tee shirt" />
 		       <Card.Footer>
 			   <Card.Text>
-				   <code style={{color: 'black'}}>Size: </code>
-				    <select id="sizedrop" onChange={() => setSize(size)} 
-					    style={{marginRight: '5px', paddingRight: '5px'}} name="size">
-				       <option value="xs" selected>xs</option>
-				       <option value="s">s</option>
-				       <option value="m">m</option>
-				       <option value="l">l</option>
-				       <option value="xl">xl</option>
-				   </select>
 				   <code style={{color: 'black'}}>Quantity: </code>
 				   <select onChange={count} id="quantity" name="quantity">
 				       <option value="1">1</option>
@@ -71,13 +62,22 @@ function Tee ()  {
 				       <option value="8">8</option>
 				       <option value="9">9</option>
 				   </select>
+				   <code style={{color: 'black'}}>Size: </code>
+				    <select id="sizedrop" onChange={() => setSize(size)} 
+					    style={{marginRight: '5px', paddingRight: '5px'}} name="size">
+				       <option value="xs" selected>xs</option>
+				       <option value="s">s</option>
+				       <option value="m">m</option>
+				       <option value="l">l</option>
+				       <option value="xl">xl</option>
+				   </select>
 			   </Card.Text>
 		       </Card.Footer>
 		   </Card>
 	       </Card.Body>
 	       <Switch>
 	       <Route exact path="/tee/checkout">
-		   <Checkout quantity={count} size={size} />
+		   <Checkout count={count} size={size} />
 	       </Route>
 	       </Switch>
 	   <Link to="/tee/checkout">
