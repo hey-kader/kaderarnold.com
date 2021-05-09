@@ -11,7 +11,7 @@ function Blog () {
 		<Card.Body>
 		    <Card.Text>
 			<ul>
-			    <li><a href="#"></a></li>
+			    <li><a href=""></a></li>
 			</ul>
 		    </Card.Text>
 		</Card.Body>
