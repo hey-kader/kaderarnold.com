@@ -61,6 +61,7 @@ function Checkout (props) {
 	width: '230px'
     }
     function sold () {
+        // process card info using the stripe api
         alert ('sold!');
         alert(document.getElementById('total').innerHTML);
     }
