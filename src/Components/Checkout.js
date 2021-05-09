@@ -60,6 +60,10 @@ function Checkout (props) {
 	alignContent: 'left', 
 	width: '230px'
     }
+    function sold () {
+        alert ('sold!');
+        alert(document.getElementById('total').innerHTML);
+    }
 
     return (
 	<>
@@ -119,7 +123,7 @@ function Checkout (props) {
 		            <td id="subtotal">{30*count}</td>
 		        </tr>
 			<tr>
-			    <td>{shippingSpeed}</td>
+			    <td>{shippingSpeed} Shipping</td>
 			    <td></td>
 			    <td id="price">12.00</td>
 			</tr>
@@ -183,7 +187,7 @@ function Checkout (props) {
 			</tr>
 			<tr>
 			    <td>
-				<label>Zip code: </label>
+				<label>Zipcode: </label>
 			    </td>
 			    <td>
 				<input type="text" name="name" placeholder="16093" required />
@@ -230,7 +234,7 @@ function Checkout (props) {
 	    </ Card>
 	    </ Card.Body>
 		<Card.Footer style={{contentJustify: 'right'}}>
-		<input type="submit" name="submit" value="submit" />
+                    <input type="submit" name="submit" value="submit" onClick={sold} />
 	    </ Card.Footer>
     </>
     )
