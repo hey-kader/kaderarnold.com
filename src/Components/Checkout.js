@@ -45,7 +45,7 @@ function Checkout (props) {
 	document.getElementById('tax').innerHTML = tax.toFixed(2)
 	document.getElementById('total').innerHTML = (parseFloat(price)+(tax)+parseFloat(subtotal)).toFixed(2)
         document.getElementById('count').innerHTML = count
-        document.getElementById('subtotal').innerHTML = count*30
+        document.getElementById('subtotal').innerHTML = (count*30).toFixed(2)
 
     });
 
@@ -68,6 +68,7 @@ function Checkout (props) {
     return (
 	<>
 	    <Link to="/tee/checkout" />
+            <form onSubmit={sold}> 
 	    <Card.Header>
 		<Card.Text><h3>Checkout</h3></Card.Text>
 	    </Card.Header>
@@ -75,7 +76,6 @@ function Checkout (props) {
 		    <Card style={embedded_card}>
 		<Card.Header><Card.Text><h6>Shipping</h6></Card.Text></Card.Header>
 		<Card.Body>
-		    <form action="#"> 
 			<table style={embedded_card_table}>
 			<tr>
 			    <td>
@@ -100,7 +100,6 @@ function Checkout (props) {
 			</tr>
 		    </table>
 
-	</form>
 		</Card.Body>
 		<Card.Footer>
 		    <Card.Text></Card.Text>
@@ -150,14 +149,13 @@ function Checkout (props) {
 		    </Card.Text>
 		</Card.Header>
 		<Card.Body>
-		    <form action="#">
 		    <table>
 			<tr>
 			    <td>
 				<label>Email: </label>
 			    </td>
 			    <td>
-				<input type="text" name="name" placeholder="example@white.tee" required />
+                                <input type="email" name="name" placeholder="example@white.tee" required />
 			    </td>
 			</tr>
 			<br />
@@ -228,14 +226,14 @@ function Checkout (props) {
 			</tr>
 		    </table>
 			<br />
-		</form>
 		</ Card.Body>
 		<Card.Footer></Card.Footer>
 	    </ Card>
 	    </ Card.Body>
 		<Card.Footer style={{contentJustify: 'right'}}>
-                    <input type="submit" name="submit" value="submit" onClick={sold} />
+                    <input type="submit" name="submit" value="submit" />
 	    </ Card.Footer>
+            </form>
     </>
     )
 
