@@ -5,6 +5,8 @@ import { Switch, Route, Link } from 'react-router-dom'
 import StripeCheckout from 'react-stripe-checkout'
 import axios from 'axios'
 
+import './.env'
+
 //import { toast } from 'react-toastify'
 
 import {Elements} from'@stripe/react-stripe-js';
@@ -51,8 +53,11 @@ function Checkout (props) {
 	var tax = (parseFloat(subtotal)*.07)+(parseFloat(price)*0.07) 
 
 	document.getElementById('tax').innerHTML = tax.toFixed(2)
-	document.getElementById('total').innerHTML = (parseFloat(price)+(tax)+parseFloat(subtotal)).toFixed(2)
-        document.getElementById('count').innerHTML = count
+
+        var total = (parseFloat(price)+(tax)+parseFloat(subtotal)).toFixed(2)
+	document.getElementById('total').innerHTML = total
+
+            document.getElementById('count').innerHTML = count
         document.getElementById('subtotal').innerHTML = (count*30).toFixed(2)
 
     });
@@ -159,9 +164,11 @@ function Checkout (props) {
 	    </ Card.Body>
 		<Card.Footer style={{contentJustify: 'right'}}>
                 <StripeCheckout
-                    stripeKey=process.env.SECRET_KEY
-                    amount={(size*count)*(100)}
+                    stripeKey="pk_test_51Im5wBA85cvC0ethrqLGm7bSeFxvbpeD1NFlRv0PrnRbF6oIWcQmxOYxTgvngyv1xP82vLxFcH5Xe8qIvMqPVfTE00mIAiz1Q7"
                     token={handleToken}
+                    billingAddress
+                    shippingAddress
+                    amount={((size*count)+((size*count)*0.08))*(100)}
                 />
 	    </ Card.Footer>
 
