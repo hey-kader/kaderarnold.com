@@ -2,6 +2,15 @@ import React, { Component, useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap' 
 import { Switch, Route, Link } from 'react-router-dom' 
 
+import StripeCheckout from 'react-stripe-checkout'
+import axios from 'axios'
+
+//import { toast } from 'react-toastify'
+
+import {Elements} from'@stripe/react-stripe-js';
+import {loadStripe } from '@stripe/stripe-js';
+
+
 function Checkout (props) {
 
     let [size, setSize] = useState(props.size); 
@@ -18,7 +27,6 @@ function Checkout (props) {
 	count = set.options[set.selectedIndex].value
 
     });
-
 
     let [shippingSpeed, setState] = useState('Ground')
     useEffect (() => {
@@ -51,25 +59,30 @@ function Checkout (props) {
 
     const embedded_card = {
 	marginLeft: '1rem', 
-	marginBottom: '1.5rem', 
-	float: 'right' 
+	alignContent: 'center', 
+	marginBottom: '1rem', 
     }
     const embedded_card_table = {
+        alignItems: 'center',
 	padding: '0rem 1rem', 
 	margin: '0rem 1.1rem 0rem 1rem',
-	alignContent: 'left', 
-	width: '230px'
+	alignContent: 'center', 
+	width: '500px'
     }
     function sold () {
         // process card info using the stripe api
+         
         alert ('sold!');
         alert(document.getElementById('total').innerHTML);
+    }
+    function handleToken (token, addresses) {
+        console.log({token, addresses})
+    
     }
 
     return (
 	<>
 	    <Link to="/tee/checkout" />
-            <form onSubmit={sold}> 
 	    <Card.Header>
 		<Card.Text><h3>Checkout</h3></Card.Text>
 	    </Card.Header>
@@ -143,102 +156,16 @@ function Checkout (props) {
 		<Card.Footer>
 		</Card.Footer>
 	    </Card>
-	    <Card>
-		<Card.Header>
-		    <Card.Text>
-			<h6>Billing Info</h6>
-		    </Card.Text>
-		</Card.Header>
-		<Card.Body>
-		    <table>
-			<tr>
-			    <td>
-				<label>Email: </label>
-			    </td>
-			    <td>
-                                <input type="email" name="name" placeholder="example@white.tee" required />
-			    </td>
-			</tr>
-			<br />
-			<tr>
-			    <td>
-				<label>Address: </label>
-			    </td>
-			    <td>
-				<input type="text" name="name" placeholder="120 White Tee St." required />
-			    </td>
-			</tr>
-			<tr>
-			    <td>
-				<label>City: </label>
-			    </td>
-			    <td>
-				<input type="text" name="name" placeholder="Teeville" required />
-			    </td>
-			</tr>
-			<tr>
-			    <td>
-				<label>State: </label>
-			    </td>
-			    <td>
-				<input type="text" name="name" placeholder="Tennessee" required />
-			    </td>
-			</tr>
-			<tr>
-			    <td>
-				<label>Zipcode: </label>
-			    </td>
-			    <td>
-				<input type="text" name="name" placeholder="16093" required />
-			    </td>
-			</tr>
-			<br />
-			<tr>
-			    <td>
-				<label>Name: </label>
-			    </td>
-			    <td>
-				<input type="text" name="name" placeholder="White Tee" required />
-			    </td>
-			</tr>
-			<tr>
-			    <td>
-				<label>Card: </label>
-			    </td>
-			    <td>
-				<input type="text" name="name" placeholder="4460 9943 9285 7284" required />
-			    </td>
-			</tr>
-			<tr>
-			    <td>
-				<label>Expiration: </label>
-			    </td>
-			    <td>
-				<input type="text" name="name" placeholder="MM/YYYY" required />
-			    </td>
-			</tr>
-			<tr>
-			    <td>
-				CVV
-			    </td>
-			    <td>
-				<input type="text" name="name" placeholder="228" required />
-			    </td>
-			</tr>
-		    </table>
-			<br />
-		</ Card.Body>
-		<Card.Footer></Card.Footer>
-	    </ Card>
 	    </ Card.Body>
 		<Card.Footer style={{contentJustify: 'right'}}>
-                    <input type="submit" name="submit" value="submit" />
+                <StripeCheckout
+                    stripeKey=process.env.SECRET_KEY
+                    amount={(size*count)*(100)}
+                    token={handleToken}
+                />
 	    </ Card.Footer>
-            </form>
+
     </>
     )
-
-
-
 }
 export default Checkout
